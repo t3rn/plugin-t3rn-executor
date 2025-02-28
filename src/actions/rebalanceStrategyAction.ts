@@ -14,7 +14,7 @@ import { z } from "zod";
 import { validateConfig } from "../environment.ts";
 import { useGetAccount } from "../hooks/useGetAccount.ts";
 import { getExecutor } from "@t3rn/executor";
-import { convertBigNumbersToString, deepClone } from "../../../utils/helpers.ts";
+import { convertBigNumbersToString, deepClone } from "../utils/helpers.ts";
 import { formatEther } from "viem";
 import { rebalanceStrategyExamples } from "../examples.ts";
 

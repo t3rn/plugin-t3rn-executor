@@ -14,9 +14,9 @@ import {
 import { z } from "zod";
 import { useGetAccount } from "../hooks/useGetAccount.ts";
 import { validateConfig } from "../environment.ts";
-import { AnalyzeActionResponse } from "../../../types.ts";
+import { AnalyzeActionResponse } from "../types.ts";
 import { getExecutor } from "@t3rn/executor";
-import { convertBigNumbersToString } from "../../../utils/helpers.ts";
+import { convertBigNumbersToString } from "../utils/helpers.ts";
 import { NetworkIdT3rn } from "@t3rn/executor/dist/src/pricer/types";
 import { analyzeActionExamples } from "../examples.ts";
 

@@ -1,17 +1,17 @@
-export interface APODResponse {
-    copyright: string;
-    date: string;
-    explanation: string;
-    hdurl: string;
-    media_type: string;
-    service_version: string;
-    title: string;
-    url: string;
-  }
+import { Action, Character, Evaluator, Provider } from '@elizaos/core'
 
-  export interface MarsRoverDataResponse {
-      photo: string;
-      sol: number;
-      camera: string;
-      rover: string;
-  }
+export interface CustomCharacter extends Character {
+    actions: Action[]
+    evaluators: Evaluator[]
+    providers: Provider[]
+}
+
+export interface AnalyzeActionResponse {
+    shouldRebalanceWallet: boolean;
+    shouldRebalanceStrategy: boolean;
+    walletReasoning: string;
+    strategyReasoning: string;
+    checkAgainInSec: number;
+    walletRebalanceCommand?: string;
+    strategyRebalanceCommand?: string;
+}

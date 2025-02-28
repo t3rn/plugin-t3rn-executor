@@ -1,117 +1,65 @@
-# @elizaos/plugin-grix
+Welcome to the t3rn Executor Setup! This guided process will help you configure your executor with ease, providing step-by-step instructions to ensure a smooth start. Let's get you set up and ready to operate efficiently across multiple blockchain networks.
 
-A plugin that enables DeFi options data fetching and price analysis through the Grix Finance API integration.
+# Preinstallation
 
-## Features
-
-### Price Data
-
--   Real-time BTC/ETH price feeds
--   Options pricing across multiple protocols
--   Available liquidity information
-
-### Options Data
-
--   Call and Put options data
--   Strike prices and expiry dates
--   Protocol-specific pricing
--   Position types (long/short)
-
-## Available Actions
-
-### getOptionPrice
-
-Fetches options data across multiple protocols:
-
--   Real-time options pricing
--   Available strike prices
--   Current expiry dates
--   Protocol comparisons
--   Liquidity information
--   Position types (long/short)
-
-### getAssetPrice
-
-Retrieves real-time price data:
-
--   Current BTC price
--   Current ETH price
--   Price updates in real-time
- 
-## Installation
+Install nvm and configure nodejs:
 
 ```bash
-pnpm add @elizaos/plugin-grix
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install
+nvm use
 ```
 
-## Configuration
-
-To use the plugin, you'll need a Grix API key. You can request one by messaging us on [Discord](https://discord.com/invite/ZgPpr9psqp) or [Telegram](https://t.me/GrixFinance).
-
-There are two ways to configure your API key:
-
-### 1. Environment Variables
-
-```env
-GRIX_API_KEY=your_api_key
-```
-
-### 2. Character Configuration
-
-```json
-{
-	"name": "Your Character",
-	"plugins": ["@elizaos/plugin-grix"],
-	"settings": {
-		"secrets": {
-			"GRIX_API_KEY": "your_api_key_here"
-		}
-	}
-}
-```
-
-## Quick Start
-
-1. Visit [Grix Finance](https://app.grix.finance)
-2. Request your API key through our Discord or Telegram
-3. Add configuration using either method above
-4. Start fetching options data!
-
-## Community & Support
-
--   [Discord Community](https://discord.com/invite/ZgPpr9psqp)
--   [Telegram Group](https://t.me/GrixFinance)
--   [Documentation](https://app.grix.finance/docs)
-
-
-## Development
-
-### Building
+Install direnv:
 
 ```bash
-pnpm build
+curl -sfL https://direnv.net/install.sh | bash
 ```
 
-### Running with Eliza
+To install the required package manager, run the following commands:
 
-1. Install dependencies:
+```bash
+npm install -g pnpm
+```
+
+Verify the installation by running:
+
+```bash
+which pnpm
+```
+
+# Installation
+
+Clone the Executor repository by running:
+
+```bash
+git clone git@github.com:t3rn/executor.git
+```
+
+Once you have installed the necessary dependencies, navigate to the root folder of the repository and run the following command:
 
 ```bash
 pnpm install
 ```
 
-2. Configure your API key using one of the methods described in the Configuration section
+This will install all the required packages and dependencies for the project.
 
-3. Start Eliza with your character:
+# Configure Settings and Environment Required Variables
+
+We have provided `.envrc` with default values, you can copy sensitive environment variables to `.envrc.local` (which is in gitignore) and modify them.
+
+1. Add your Executor Private Key `export PRIVATE_KEY_EXECUTOR=0xdead93c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56dbeef`
+2. Add your preferred networks to operate on `export ENABLED_NETWORKS='base-sepolia,optimism-sepolia,l1rn'`
+3. Set your preferred Node Environment `export ENVIRONMENT=testnet`
+
+# Configure Your Arbitrage Strategies (optional)
+
+Configure your Arbitrage Strategies for your enabled networks in `src/config/executor-arbitrage-strategies.ts` file.
+
+# Start
+
+To start the Executor, run:
 
 ```bash
-pnpm start --character="characters/your_character.character.json"
+pnpm start:executor
 ```
-
-## License
-
-MIT
-
-## Disclaimer
-
-Please ensure compliance with your local regulations regarding options trading.
