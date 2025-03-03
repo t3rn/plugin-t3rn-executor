@@ -1,4 +1,4 @@
-import { IAgentRuntime } from "@elizaos/core";
+import { settings } from "@elizaos/core";
 import { z } from "zod";
 
 export const envSchema = z.object({
@@ -6,6 +6,8 @@ export const envSchema = z.object({
 		.string()
 		.default("testnet")
 		.transform((value) => value.toLowerCase()),
+	LOG_PRETTY: z.coerce.boolean().default(true),
+	APP_NAME: z.string().default("executor"),
 	PRIVATE_KEY_EXECUTOR: z
 		.string()
 		.min(1, "Wallet Private Key is required")
@@ -13,23 +15,25 @@ export const envSchema = z.object({
 			message:
 				"Wallet private key must be a 64-character hexadecimal string (32 bytes)",
 		}),
-	PRICER_URL: z.string().min(1, "Pricer API URL is required"),
-	ENABLED_NETWORKS: z
-		.string()
-		.min(1, "At least one network must be enabled"),
+	PRICER_URL: z.string().min(1, "Pricer API URL is required").default('https://api.t1rn.io'),
+	OPENAI_API_KEY: z.string().min(1, "OpenAI API key is required"),
+	DISABLE_ANALYSIS: z.coerce.boolean().default(false),
+	DISABLE_EXECUTOR_AUTORUN: z.coerce.boolean().default(true)
 });
 
 export type Config = z.infer<typeof envSchema>;
 
-export async function validateConfig(
-	runtime: IAgentRuntime,
-): Promise<Config> {
+export function validateConfig(): Config {
 	try {
 		const config = {
-			ENVIRONMENT: runtime.getSetting("ENVIRONMENT"),
-			PRIVATE_KEY_EXECUTOR: runtime.getSetting("PRIVATE_KEY_EXECUTOR"),
-			PRICER_URL: runtime.getSetting("PRICER_URL"),
-			ENABLED_NETWORKS: runtime.getSetting("ENABLED_NETWORKS"),
+			ENVIRONMENT: settings.ENVIRONMENT,
+			LOG_PRETTY: settings.LOG_PRETTY,
+			APP_NAME: settings.APP_NAME,
+			PRIVATE_KEY_EXECUTOR: settings.PRIVATE_KEY_EXECUTOR,
+			PRICER_URL: settings.PRICER_URL,
+			OPENAI_API_KEY: settings.OPENAI_API_KEY,
+			DISABLE_ANALYSIS: settings.DISABLE_ANALYSIS,
+			DISABLE_EXECUTOR_AUTORUN: settings.DISABLE_EXECUTOR_AUTORUN
 		};
 
 		return envSchema.parse(config);
@@ -38,9 +42,7 @@ export async function validateConfig(
 			const errorMessages = error.errors
 				.map((err) => `${err.path.join(".")}: ${err.message}`)
 				.join("\n");
-			throw new Error(
-				`Configuration validation failed:\n${errorMessages}`,
-			);
+			throw new Error(`Configuration validation failed:\n${errorMessages}`);
 		}
 		throw error;
 	}

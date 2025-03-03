@@ -121,7 +121,7 @@ Instructions:
 
 Respond with a JSON markdown block following EXACTLY the structure in the example.`;
 
-export const rebalanceStrategyAction: Action = {
+export const rebalanceStrategy: Action = {
     name: "REBALANCE_STRATEGY",
     similes: [
         "REBALANCE_ARBITRAGE_STRATEGY",
@@ -130,8 +130,8 @@ export const rebalanceStrategyAction: Action = {
         "REBALANCE_SWAP_STRATEGY",
         "REBALANCE_BRIDGE_STRATEGY",
     ],
-    validate: async (runtime: IAgentRuntime) => {
-        await validateConfig(runtime);
+    validate: async (_runtime: IAgentRuntime) => {
+        validateConfig();
         return true;
     },
     description: "Rebalance executor's arbitrage strategy",

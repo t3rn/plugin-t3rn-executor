@@ -111,7 +111,7 @@ Networks shall be provided in their short id format: arbt, opst, etc, even when 
 
 Respond with a JSON markdown block containing only the extracted values.`;
 
-export const rebalanceWalletAction: Action = {
+export const rebalanceWallet: Action = {
 	name: "SEND_TOKEN",
 	similes: [
 		"REBALANCE_WALLET",
@@ -126,8 +126,8 @@ export const rebalanceWalletAction: Action = {
 		"BRIDGE_TOKENS",
 		"SWAP_AMOUNT"
 	],
-	validate: async (runtime: IAgentRuntime) => {
-		await validateConfig(runtime);
+	validate: async (_runtime: IAgentRuntime) => {
+		validateConfig();
 		return true;
 	},
 	description: "Rebalance tokens in the agent's wallet",

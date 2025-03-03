@@ -77,6 +77,7 @@ const generateAnalyzeTemplate = (data: string) => {
              "Bridge {amount}{token} from networkA to networkB"
              
              where networkA is the most profitable and networkB is the least profitable network. Network id shall be provided as is, e.g., l0rn, opst, arbt, etc.
+             Always provide a correct/valid command, e.g.: Bridge 0.001ETH from opst to arbt
 
         2. Arbitrage Strategy Rebalancing:
            - Analyze the arbitrageStrategy settings for each enabled network (consider parameters such as minProfitPerOrder, minProfitRate, and order limits).
@@ -121,7 +122,7 @@ const generateAnalyzeTemplate = (data: string) => {
     `;
 }
 
-export const analyzeConditionsAction: Action = {
+export const analyzeConditions: Action = {
     name: "START_ANALYSIS",
     similes: [
         "ANALYZE_CONDITIONS",
@@ -131,8 +132,8 @@ export const analyzeConditionsAction: Action = {
         "ANALYZE",
         "REQUEST_CONDITIONS",
     ],
-    validate: async (runtime: IAgentRuntime, _message: Memory) => {
-        await validateConfig(runtime);
+    validate: async (_runtime: IAgentRuntime, _message: Memory) => {
+        validateConfig();
         return true;
     },
     description: "Analyze conditions to optimize wallet balances",

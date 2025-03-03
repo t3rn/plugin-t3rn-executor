@@ -1,12 +1,14 @@
 import { Plugin } from "@elizaos/core";
-import { rebalanceWalletAction } from "./actions/rebalanceWalletAction.ts";
-import { analyzeConditionsAction } from "./actions/analyzeConditionsAction.ts";
-import { rebalanceStrategyAction } from "./actions/rebalanceStrategyAction.ts";
+import { rebalanceWallet } from "./actions/rebalanceWallet.ts";
+import { analyzeConditions } from "./actions/analyzeConditions.ts";
+import { rebalanceStrategy } from "./actions/rebalanceStrategy.ts";
+import { executorAnalysis } from "./services/analysis.ts";
 
-export const rebalancerPlugin: Plugin = {
-	name: "rebalancer",
-	description: "Rebalancer Plugin for Executor",
-	actions: [analyzeConditionsAction, rebalanceStrategyAction, rebalanceWalletAction],
+export const executorPlugin: Plugin = {
+	name: "ai-executor",
+	description: "AI Plugin for Executor",
+	actions: [analyzeConditions, rebalanceStrategy, rebalanceWallet],
 	evaluators: [],
 	providers: [],
+	services: [executorAnalysis]
 };

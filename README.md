@@ -49,8 +49,7 @@ This will install all the required packages and dependencies for the project.
 We have provided `.envrc` with default values, you can copy sensitive environment variables to `.envrc.local` (which is in gitignore) and modify them.
 
 1. Add your Executor Private Key `export PRIVATE_KEY_EXECUTOR=0xdead93c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56dbeef`
-2. Add your preferred networks to operate on `export ENABLED_NETWORKS='base-sepolia,optimism-sepolia,l1rn'`
-3. Set your preferred Node Environment `export ENVIRONMENT=testnet`
+2. Set your preferred Node Environment `export ENVIRONMENT=testnet`
 
 # Configure Your Arbitrage Strategies (optional)
 

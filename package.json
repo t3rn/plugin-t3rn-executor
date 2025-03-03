@@ -9,7 +9,6 @@
 		"./package.json": "./package.json",
 		".": {
 			"import": {
-				"@elizaos/source": "./src/index.ts",
 				"types": "./dist/index.d.ts",
 				"default": "./dist/index.js"
 			}
@@ -38,5 +37,42 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"agentConfig": {
+		"pluginType": "elizaos:plugin:1.0.0",
+		"pluginParameters": {
+			"ENVIRONMENT": {
+				"type": "string",
+				"description": "Deployment environment (testnet, mainnet, devnet)"
+			},
+			"LOG_PRETTY": {
+				"type": "boolean",
+				"description": "Enable pretty logging output"
+			},
+			"APP_NAME": {
+				"type": "string",
+				"description": "Name of the application, e.g.: executor"
+			},
+			"PRIVATE_KEY_EXECUTOR": {
+				"type": "string",
+				"description": "Private key for the executor, starting with 0x"
+			},
+			"PRICER_URL": {
+				"type": "string",
+				"description": "URL for the pricer API"
+			},
+			"OPENAI_API_KEY": {
+				"type": "string",
+				"description": "API key for OpenAI integration"
+			},
+			"DISABLE_ANALYSIS": {
+				"type": "boolean",
+				"description": "Disable executor analysis (enable chat instead)"
+			},
+			"DISABLE_EXECUTOR_AUTORUN": {
+				"type": "boolean",
+				"description": "Mandatory flag to disable executor autorun"
+			}
+		}
 	}
 }
