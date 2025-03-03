@@ -20,8 +20,9 @@
 	],
 	"dependencies": {
 		"@elizaos/core": "workspace:*",
-		"tsup": "8.3.5",
 		"@ethersproject/bignumber": "^5.7.0",
+		"@t3rn/executor": "^0.0.3",
+		"tsup": "8.3.5",
 		"viem": "2.22.2"
 	},
 	"devDependencies": {

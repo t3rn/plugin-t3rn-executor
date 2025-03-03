@@ -7,3 +7,4 @@ dist/
 db.sqlite
 .idea
 .tee-cloud
+.turbo
