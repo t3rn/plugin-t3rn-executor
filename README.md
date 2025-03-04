@@ -60,6 +60,9 @@ Rebalances tokens in the executor's wallet by transferring assets between networ
 - "Bridge 1 t3BTC from l1rn to lint"
 - "Swap 1 ETH to DOT from sepl to bsc"
 
+**Demo:**
+![alt text](<./screenshots/demo2.png>)
+
 ---
 
 ### REBALANCE_STRATEGY
@@ -75,6 +78,8 @@ Adjusts the executor's arbitrage strategy parameters across multiple networks to
 **Examples:**
 - "Rebalance arbitrage strategy for network arbt with the following parameters: {\"eth\": {\"minProfitPerOrder\": \"6000000000000000000\", \"minProfitRate\": \"6\", \"maxAmountPerOrder\": \"60000000000000000000\", \"minAmountPerOrder\": \"60000000000000\", \"maxShareOfMyBalancePerOrder\": 60}}"
 
+**Demo:**
+![alt text](<./screenshots/demo3.png>)
 ---
 
 ### START_ANALYSIS
@@ -91,6 +96,9 @@ Analyzes market conditions and internal performance metrics to decide whether wa
 **Examples:**
 - "Start analysis"
 - "Analyze current market conditions"
+
+**Demo:**
+![alt text](<./screenshots/demo1.png>)
 
 ## Autonomy
 
@@ -111,6 +119,9 @@ This integrated mode allows for seamless automation where:
 - The AI executor constantly monitors market conditions and performance metrics.
 - Decisions on wallet rebalancing and arbitrage strategy adjustments are made in real time.
 - Automated commands are issued to rebalance the wallet and update arbitrage strategies accordingly.
+
+**Demo:**
+![alt text](<./screenshots/demo4.png>)
 
 ## Response Format
 
