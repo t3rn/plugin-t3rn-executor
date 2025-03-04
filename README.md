@@ -1,64 +1,128 @@
-Welcome to the t3rn Executor Setup! This guided process will help you configure your executor with ease, providing step-by-step instructions to ensure a smooth start. Let's get you set up and ready to operate efficiently across multiple blockchain networks.
+# Plugin Executor
 
-# Preinstallation
+A plugin for optimizing cryptocurrency execution strategies for executors within the t3rn ecosystem.
 
-Install nvm and configure nodejs:
+## Overview
 
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install
-nvm use
-```
+t3rn AI Executor analyzes your wallet balances and arbitrage strategies across multiple networks. It leverages real-time market data, historical performance metrics, and advanced AI analysis to automatically rebalance the executor's wallet balances and arbitrage strategy to ensure maximum profitability.
 
-Install direnv:
+## Installation
 
 ```bash
-curl -sfL https://direnv.net/install.sh | bash
+pnpm add @elizaos-plugins/plugin-executor
 ```
 
-To install the required package manager, run the following commands:
+## Configuration
 
+We have provided `.envrc` with default values; you can copy sensitive environment variables to `.env` and modify them.  
+Set up your environment with the required variables:
+
+| Variable Name              | Description                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
+| `ENVIRONMENT`              | Deployment environment (testnet, mainnet, devnet)                 |
+| `LOG_PRETTY`               | Enable pretty logging output                                      |
+| `APP_NAME`                 | Name of the application, e.g.: executor                           |
+| `PRIVATE_KEY_EXECUTOR`     | Private key for the executor, starting with 0x                    |
+| `PRICER_URL`               | URL for the pricer API                                            |
+| `OPENAI_API_KEY`           | API key for OpenAI integration                                    |
+| `DISABLE_AI_EXECUTOR_AUTORUN`         | Disable executor analysis (enable chat instead)                   |
+| `DISABLE_EXECUTOR_AUTORUN` | Mandatory flag to disable executor autorun                        |
+
+## Usage
+
+```typescript
+import { executorPlugin } from "@elizaos-plugins/plugin-executor";
+
+// Use the plugin in your agent
+{
+    name: "Executor",
+    username: "executor",
+    modelProvider: ModelProviderName.OPENAI,
+    plugins: [executorPlugin],
+    // ...rest of character
+}
+```
+
+## Actions
+
+### SEND_TOKEN
+
+**Description:**  
+Rebalances tokens in the executor's wallet by transferring assets between networks when market conditions dictate.
+
+**Features:**
+- Monitors token balances and market conditions.
+- Issues commands for token transfers based on profitability analysis.
+- Integrates with the executor's state management system.
+
+**Examples:**
+- "Send 0.001 ETH from arbt to opst"
+- "Bridge 1 t3BTC from l1rn to lint"
+- "Swap 1 ETH to DOT from sepl to bsc"
+
+---
+
+### REBALANCE_STRATEGY
+
+**Description:**  
+Adjusts the executor's arbitrage strategy parameters across multiple networks to maximize profit.
+
+**Features:**
+- Evaluates current arbitrage settings against historical performance data.
+- Suggests adjustments to parameters like minimum profit per order and order limits.
+- Merges new recommendations with existing strategy settings.
+
+**Examples:**
+- "Rebalance arbitrage strategy for network arbt with the following parameters: {\"eth\": {\"minProfitPerOrder\": \"6000000000000000000\", \"minProfitRate\": \"6\", \"maxAmountPerOrder\": \"60000000000000000000\", \"minAmountPerOrder\": \"60000000000000\", \"maxShareOfMyBalancePerOrder\": 60}}"
+
+---
+
+### START_ANALYSIS
+
+**Description:**  
+Analyzes market conditions and internal performance metrics to decide whether wallet or strategy rebalancing is needed.
+
+**Features:**
+- Retrieves enabled networks, current balances, and arbitrage strategies.
+- Combines data from the pricer API and historical performance metrics.
+- Provides detailed reasoning and actionable recommendations.
+- Specifies the interval before the next analysis should run.
+
+**Examples:**
+- "Start analysis"
+- "Analyze current market conditions"
+
+## Autonomy
+
+t3rn AI Executor is designed to run the base t3rn executor code while at the same time taking advantage of AI Agents.
+
+To run in autonomous mode:
+1. Set in .env:
 ```bash
-npm install -g pnpm
+DISABLE_AI_EXECUTOR_AUTORUN=false
 ```
 
-Verify the installation by running:
+2. `pnpm start`
 
-```bash
-which pnpm
-```
+In autonomous mode, the AI executor continuously analyzes market data, wallet balances, and arbitrage strategies to automatically trigger rebalancing actions—ensuring that the executor is always operating at optimal profitability without manual intervention.
 
-# Installation
+This integrated mode allows for seamless automation where:
+- The classic executor handles core t3rn execution functionalities.
+- The AI executor constantly monitors market conditions and performance metrics.
+- Decisions on wallet rebalancing and arbitrage strategy adjustments are made in real time.
+- Automated commands are issued to rebalance the wallet and update arbitrage strategies accordingly.
 
-Clone the Executor repository by running:
+## Response Format
 
-```bash
-git clone git@github.com:t3rn/executor.git
-```
+All actions return structured data including:
+- Formatted text for easy reading.
+- Raw data for programmatic use.
+- Request parameters used.
+- Error details when applicable.
 
-Once you have installed the necessary dependencies, navigate to the root folder of the repository and run the following command:
+## Error Handling
 
-```bash
-pnpm install
-```
-
-This will install all the required packages and dependencies for the project.
-
-# Configure Settings and Environment Required Variables
-
-We have provided `.envrc` with default values, you can copy sensitive environment variables to `.envrc.local` (which is in gitignore) and modify them.
-
-1. Add your Executor Private Key `export PRIVATE_KEY_EXECUTOR=0xdead93c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56dbeef`
-2. Set your preferred Node Environment `export ENVIRONMENT=testnet`
-
-# Configure Your Arbitrage Strategies (optional)
-
-Configure your Arbitrage Strategies for your enabled networks in `src/config/executor-arbitrage-strategies.ts` file.
-
-# Start
-
-To start the Executor, run:
-
-```bash
-pnpm start:executor
-```
+The plugin handles various error scenarios:
+- Invalid configurations or parameters.
+- Mismatches between expected and actual market conditions.
+- Internal state or messaging errors.

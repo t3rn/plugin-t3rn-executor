@@ -84,7 +84,7 @@ describe('Executor Rebalance Strategy Action', () => {
                     PRIVATE_KEY_EXECUTOR: '0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef',
                     PRICER_URL: 'https://api.t0rn.io',
                     OPENAI_API_KEY: 'dummy-openai-key',
-                    DISABLE_ANALYSIS: true,
+                    DISABLE_AI_EXECUTOR_AUTORUN: true,
                     DISABLE_EXECUTOR_AUTORUN: true
                 };
                 return settings[key];

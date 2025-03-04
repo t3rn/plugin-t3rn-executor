@@ -17,7 +17,7 @@ export const envSchema = z.object({
 		}),
 	PRICER_URL: z.string().min(1, "Pricer API URL is required").default('https://api.t1rn.io'),
 	OPENAI_API_KEY: z.string().min(1, "OpenAI API key is required"),
-	DISABLE_ANALYSIS: z.coerce.boolean().default(false),
+	DISABLE_AI_EXECUTOR_AUTORUN: z.coerce.boolean().default(false),
 	DISABLE_EXECUTOR_AUTORUN: z.coerce.boolean().default(true)
 });
 
@@ -32,7 +32,7 @@ export function validateConfig(): Config {
 			PRIVATE_KEY_EXECUTOR: settings.PRIVATE_KEY_EXECUTOR,
 			PRICER_URL: settings.PRICER_URL,
 			OPENAI_API_KEY: settings.OPENAI_API_KEY,
-			DISABLE_ANALYSIS: settings.DISABLE_ANALYSIS,
+			DISABLE_AI_EXECUTOR_AUTORUN: settings.DISABLE_AI_EXECUTOR_AUTORUN,
 			DISABLE_EXECUTOR_AUTORUN: settings.DISABLE_EXECUTOR_AUTORUN
 		};
 

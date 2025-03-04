@@ -65,7 +65,7 @@
 				"type": "string",
 				"description": "API key for OpenAI integration"
 			},
-			"DISABLE_ANALYSIS": {
+			"DISABLE_AI_EXECUTOR_AUTORUN": {
 				"type": "boolean",
 				"description": "Disable executor analysis (enable chat instead)"
 			},

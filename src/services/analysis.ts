@@ -21,8 +21,8 @@ export const executorAnalysis: Service = {
         // Validate env variables
         validateConfig();
 
-        const DISABLE_ANALYSIS = runtime.getSetting("DISABLE_ANALYSIS");
-        if (DISABLE_ANALYSIS === "true") {
+        const DISABLE_AI_EXECUTOR_AUTORUN = runtime.getSetting("DISABLE_AI_EXECUTOR_AUTORUN");
+        if (DISABLE_AI_EXECUTOR_AUTORUN === "true") {
             elizaLogger.warn("Analysis is disabled. Will not start AI Executor.");
             return;
         }
