@@ -1,7 +1,5 @@
-dist
 .env
 node_modules
-dist/
 .vscode
 
 db.sqlite

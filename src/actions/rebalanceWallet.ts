@@ -28,12 +28,12 @@ const TransferSchema = z.object({
 });
 
 const validatedTransferSchema = z.object({
-	recipient: z.string(),
-	amount: z.string(),
-	sourceNetwork: z.string(),
-	destinationNetwork: z.string(),
-	fromAsset: z.string(),
-	toAsset: z.string(),
+	recipient: z.string().min(1),
+	amount: z.string().min(1),
+	sourceNetwork: z.string().min(1),
+	destinationNetwork: z.string().min(1),
+	fromAsset: z.string().min(1),
+	toAsset: z.string().min(1),
 });
 
 export interface TransferContent extends Content {
