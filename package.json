@@ -1,5 +1,5 @@
 {
-	"name": "@elizaos/plugin-executor",
+	"name": "@elizaos-plugins/plugin-executor",
 	"version": "0.1.0",
 	"type": "module",
 	"main": "dist/index.js",
