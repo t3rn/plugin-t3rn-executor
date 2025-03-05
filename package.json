@@ -49,6 +49,10 @@
 				"type": "boolean",
 				"description": "Enable pretty logging output"
 			},
+			"LOG_LEVEL": {
+				"type": "string",
+				"description": "Enable logging output, e.g.: debug"
+			},
 			"APP_NAME": {
 				"type": "string",
 				"description": "Name of the application, e.g.: executor"

@@ -7,6 +7,7 @@ export const envSchema = z.object({
 		.default("testnet")
 		.transform((value) => value.toLowerCase()),
 	LOG_PRETTY: z.coerce.boolean().default(true),
+	LOG_LEVEL: z.string().default("debug"),
 	APP_NAME: z.string().default("executor"),
 	PRIVATE_KEY_EXECUTOR: z
 		.string()
@@ -28,6 +29,7 @@ export function validateConfig(): Config {
 		const config = {
 			ENVIRONMENT: settings.ENVIRONMENT,
 			LOG_PRETTY: settings.LOG_PRETTY,
+			LOG_LEVEL: settings.LOG_LEVEL,
 			APP_NAME: settings.APP_NAME,
 			PRIVATE_KEY_EXECUTOR: settings.PRIVATE_KEY_EXECUTOR,
 			PRICER_URL: settings.PRICER_URL,

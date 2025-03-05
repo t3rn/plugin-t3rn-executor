@@ -14,7 +14,8 @@ pnpm add @elizaos-plugins/plugin-executor
 
 ## Configuration
 
-We have provided `.envrc` with default values; you can copy sensitive environment variables to `.env` and modify them.  
+We have provided `.envrc` with default values; you can copy sensitive environment variables to `.envrc.local` or `.env` and modify them.
+If you set up `.env` you must remove 'export' prefixes.
 Set up your environment with the required variables:
 
 | Variable Name              | Description                                                       |
