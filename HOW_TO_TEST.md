@@ -34,28 +34,22 @@ Add this line in `agent/package.json` dependencies.
 "@elizaos-plugins/plugin-executor": "workspace:*",
 ```
 
-Then import and use it in eliza character:
-```bash
-import { executorPlugin } from "@elizaos-plugins/plugin-executor";
-```
+We have provided a customized executor character preloaded with the plugin:
 
-```bash
-export const defaultCharacter: Character = {
-    name: "Eliza",
-    username: "eliza",
-    plugins: [executorPlugin],
-    modelProvider: ModelProviderName.OPENAI,
-```
+Move `packages/plugin-executor/characters/executor.character.ts` to `agent/src/executor.character.ts`.
 
-At last run
+Then in `agent/src/index.ts` replace all instances of `defaultCharacter` with the new `AIExecutor` and adjust the import.
+
+At last run:
 ```bash
 pnpm install
 pnpm build
 pnpm start
 ```
 
-## Actions
+## Usage
+### Actions
 [Run these 3 actions to quickly analyze t3rn's integration with Eliza.](README.md#actions)
 
-## Autonomy
+### Autonomy
 [t3rn AI Executor is designed to run the base t3rn executor code while at the same time taking advantage of AI Agents.](README.md#autonomy)
