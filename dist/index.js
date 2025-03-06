@@ -4055,6 +4055,7 @@ import { settings } from "@elizaos/core";
 var envSchema = z.object({
   ENVIRONMENT: z.string().default("testnet").transform((value) => value.toLowerCase()),
   LOG_PRETTY: z.coerce.boolean().default(true),
+  LOG_LEVEL: z.string().default("debug"),
   APP_NAME: z.string().default("executor"),
   PRIVATE_KEY_EXECUTOR: z.string().min(1, "Wallet Private Key is required").refine((key) => /^(0x)?[a-fA-F0-9]{64}$/.test(key.trim()), {
     message: "Wallet private key must be a 64-character hexadecimal string (32 bytes)"
@@ -4069,6 +4070,7 @@ function validateConfig() {
     const config = {
       ENVIRONMENT: settings.ENVIRONMENT,
       LOG_PRETTY: settings.LOG_PRETTY,
+      LOG_LEVEL: settings.LOG_LEVEL,
       APP_NAME: settings.APP_NAME,
       PRIVATE_KEY_EXECUTOR: settings.PRIVATE_KEY_EXECUTOR,
       PRICER_URL: settings.PRICER_URL,
@@ -4457,6 +4459,8 @@ var rebalanceWallet = {
     })).object;
     const executor = await getExecutor();
     const account = useGetAccount();
+    const config = executor.getConfig();
+    const environment = config.environment;
     const executorAddress = account.address;
     const recipient = executorAddress;
     if (!recipient) {
@@ -4500,8 +4504,26 @@ var rebalanceWallet = {
         toAsset2
       );
       if (callback) {
+        let txrn = "t0rn";
+        switch (environment) {
+          case "devnet":
+            txrn = "t0rn";
+            break;
+          case "testnet":
+            txrn = "t2rn";
+            break;
+          case "mainnet":
+            txrn = "t3rn";
+            break;
+        }
+        const URL2 = `https://bridge.${txrn}.io/order/${id}`;
+        const formattedResponse = `Wallet Rebalance Success! 
+Track it here: ${URL2}
+Order ID: ${id}
+Timestamp: ${orderTimestamp}
+TxHash: ${txHash}`;
         callback({
-          text: `Wallet Rebalance success! Track with Order ID: ${id} on timestamp ${orderTimestamp} with txHash: ${txHash}`,
+          text: formattedResponse,
           content: {
             id,
             txHash,
@@ -4977,7 +4999,11 @@ var rebalanceStrategy = {
       }
       if (callback) {
         callback({
-          text: `Arbitrage Strategy Rebalance completed successfully!`
+          text: `Arbitrage Strategy for Executor ${executorAddress} has been rebalanced successfully!`,
+          content: {
+            strategies: result.data,
+            executor: executorAddress
+          }
         });
       }
       return true;

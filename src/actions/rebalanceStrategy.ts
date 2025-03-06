@@ -267,7 +267,11 @@ export const rebalanceStrategy: Action = {
 
             if (callback) {
                 callback({
-                    text: `Arbitrage Strategy Rebalance completed successfully!`,
+                    text: `Arbitrage Strategy for Executor ${executorAddress} has been rebalanced successfully!`,
+                    content: {
+                        strategies: result.data,
+                        executor: executorAddress,
+                    }
                 });
             }
 

@@ -167,6 +167,8 @@ export const rebalanceWallet: Action = {
 
 		const executor = await getExecutor();
 		const account = useGetAccount();
+		const config = executor.getConfig();
+		const environment = config.environment;
 		const executorAddress = account.address;
 		const recipient = executorAddress;
 		if (!recipient) {
@@ -220,8 +222,28 @@ export const rebalanceWallet: Action = {
 			)
 
 			if (callback) {
+				let txrn = 't0rn';
+				switch (environment) {
+					case 'devnet':
+						txrn = 't0rn';
+						break;
+					case 'testnet':
+						txrn = 't2rn';
+						break;
+					case 'mainnet':
+						txrn = 't3rn';
+						break;
+				}
+				const URL = `https://bridge.${txrn}.io/order/${id}`;
+
+				const formattedResponse = `Wallet Rebalance Success! 
+Track it here: ${URL}
+Order ID: ${id}
+Timestamp: ${orderTimestamp}
+TxHash: ${txHash}`;
+
 				callback({
-					text: `Wallet Rebalance success! Track with Order ID: ${id} on timestamp ${orderTimestamp} with txHash: ${txHash}`,
+					text: formattedResponse,
 					content: {
 						id,
 						txHash,
