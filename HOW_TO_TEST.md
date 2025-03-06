@@ -2,9 +2,10 @@
 
 The Eliza Executor Plugin extends the functionality of the [t3rn](https://www.t3rn.io/) executor by incorporating AI-driven rebalancing decisions and strategy optimizations. In order to test this plugin, we have provided a `.env` file to quickly get up to speed.
 
-## Environment Setup
+## Setup
+1. Move everything from this repository to eliza under `packages/plugin-executor`.
 
-Create a `.env` file in the root directory and paste these variables:
+2. Create a `.env` file in the root directory and paste these variables:
 
 ```bash
 # # ============================ GENERAL SETTINGS ============================
@@ -29,18 +30,18 @@ DISABLE_EXECUTOR_AUTORUN=true
 RPC_ENDPOINTS={"l0rn":["http://178.63.74.220:8449"],"l1rn":["https://brn.calderarpc.com/http"],"l2rn":["https://b2n.rpc.caldera.xyz/http"],"l3rn":[],"zero":[],"t1rn":[],"t2rn":[],"t3rn":[],"lol3":["http://0.0.0.0:8547"],"lold":["http://0.0.0.0:8546"],"lols":["http://0.0.0.0:8545"],"arbm":["https://arb1.arbitrum.io/rpc"],"arbt":["https://arb-sepolia.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"basm":["https://rpc.notadegen.com/base"],"bast":["https://base-sepolia.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"bsct":["https://data-seed-prebsc-1-s2.bnbchain.org:8545"],"bscm":["https://bsc-dataseed.binance.org"],"ethm":["https://eth.llamarpc.com,https://rpc.mevblocker.io/fullprivacy,https://api.tatum.io/v3/blockchain/node/ethereum-mainnet,https://eth.llamarpc.com"],"sept":["https://ethereum-sepolia-rpc.publicnode.com"],"linm":["https://linea.blockpi.network/v1/rpc/public"],"lint":["https://linea-sepolia.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"optm":["https://mainnet.optimism.io"],"opst":["https://opt-sepolia.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"absm":[],"abst":["https://api.testnet.abs.xyz"],"berm":[],"bert":["https://berachain-bartio.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"lskm":[],"lskt":["https://rpc.sepolia-api.lisk.com"],"ctim":[],"ctit":[],"unim":["https://unichain-rpc.publicnode.com"],"unit":["https://unichain-sepolia.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"blsm":[],"blst":["https://blast-sepolia.g.alchemy.com/v2/yh3Bq2t2KlW3k4-4CtD21u_3kuDPfIO3"],"scrm":[],"scrt":["https://sepolia-rpc.scroll.io"]}
 ```
 
-Add this line in `agent/package.json` dependencies.
+3. Add this line in `agent/package.json` dependencies.
 ```bash
 "@elizaos-plugins/plugin-executor": "workspace:*",
 ```
 
-We have provided a customized executor character preloaded with the plugin:
+4. We have provided a customized executor character preloaded with the plugin:
 
 Move `packages/plugin-executor/characters/executor.character.ts` to `agent/src/executor.character.ts`.
 
 Then in `agent/src/index.ts` replace all instances of `defaultCharacter` with the new `AIExecutor` and adjust the import.
 
-At last run:
+5. At last run:
 ```bash
 nvm use 23.3.0
 pnpm install
