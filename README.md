@@ -131,6 +131,11 @@ This integrated mode allows for seamless automation where:
 **Demo:**
 ![alt text](<./screenshots/demo4.png>)
 
+## Tests
+```bash
+cd packages/plugin-executor && pnpm test
+```
+
 ## Response Format
 
 All actions return structured data including:
