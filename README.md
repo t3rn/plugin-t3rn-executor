@@ -2,9 +2,14 @@
 
 A plugin for optimizing cryptocurrency execution strategies for executors within the t3rn ecosystem.
 
+## Eliza Team Testing
+[View instructions on how to test this plugin here](HOW_TO_TEST.md)
+
 ## Overview
 
 t3rn AI Executor analyzes your wallet balances and arbitrage strategies across multiple networks. It leverages real-time market data, historical performance metrics, and advanced AI analysis to automatically rebalance the executor's wallet balances and arbitrage strategy to ensure maximum profitability.
+
+Eliza Plugin Executor extends the functionality of the [t3rn](https://www.t3rn.io/) executor by incorporating AI-driven rebalancing decisions and strategy optimizations.
 
 ## Installation
 
@@ -22,12 +27,14 @@ Set up your environment with the required variables:
 | -------------------------- | ----------------------------------------------------------------- |
 | `ENVIRONMENT`              | Deployment environment (testnet, mainnet, devnet)                 |
 | `LOG_PRETTY`               | Enable pretty logging output                                      |
+| `LOG_LEVEL`                | Set log level (debug)                                             |
 | `APP_NAME`                 | Name of the application, e.g.: executor                           |
 | `PRIVATE_KEY_EXECUTOR`     | Private key for the executor, starting with 0x                    |
 | `PRICER_URL`               | URL for the pricer API                                            |
 | `OPENAI_API_KEY`           | API key for OpenAI integration                                    |
 | `DISABLE_AI_EXECUTOR_AUTORUN`         | Disable executor analysis (enable chat instead)                   |
 | `DISABLE_EXECUTOR_AUTORUN` | Mandatory flag to disable executor autorun                        |
+
 
 ## Usage
 
