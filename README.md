@@ -53,6 +53,26 @@ import { executorPlugin } from "@elizaos-plugins/plugin-executor";
 
 ## Actions
 
+### START_ANALYSIS
+
+**Description:**  
+Analyzes market conditions and internal performance metrics to decide whether wallet or strategy rebalancing is needed.
+
+**Features:**
+- Retrieves enabled networks, current balances, and arbitrage strategies.
+- Combines data from the pricer API and historical performance metrics.
+- Provides detailed reasoning and actionable recommendations.
+- Specifies the interval before the next analysis should run.
+
+**Examples:**
+- "Start analysis"
+- "Analyze current market conditions"
+
+**Demo:**
+![alt text](<./screenshots/demo1.png>)
+
+---
+
 ### SEND_TOKEN
 
 **Description:**  
@@ -88,32 +108,16 @@ Adjusts the executor's arbitrage strategy parameters across multiple networks to
 
 **Demo:**
 ![alt text](<./screenshots/demo3.png>)
+
 ---
-
-### START_ANALYSIS
-
-**Description:**  
-Analyzes market conditions and internal performance metrics to decide whether wallet or strategy rebalancing is needed.
-
-**Features:**
-- Retrieves enabled networks, current balances, and arbitrage strategies.
-- Combines data from the pricer API and historical performance metrics.
-- Provides detailed reasoning and actionable recommendations.
-- Specifies the interval before the next analysis should run.
-
-**Examples:**
-- "Start analysis"
-- "Analyze current market conditions"
-
-**Demo:**
-![alt text](<./screenshots/demo1.png>)
+*Note*: Action response speed may be influenced by RPCs health condition.
 
 ## Autonomy
 
 t3rn AI Executor is designed to run the base t3rn executor code while at the same time taking advantage of AI Agents.
 
 To run in autonomous mode:
-1. Set in .env:
+1. Update in .env:
 ```bash
 DISABLE_AI_EXECUTOR_AUTORUN=false
 ```
