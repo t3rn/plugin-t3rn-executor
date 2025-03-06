@@ -42,9 +42,11 @@ Then in `agent/src/index.ts` replace all instances of `defaultCharacter` with th
 
 At last run:
 ```bash
+nvm use 23.3.0
 pnpm install
 pnpm build
 pnpm start
+pnpm start:client
 ```
 
 ## Usage
