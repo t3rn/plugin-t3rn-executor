@@ -83,7 +83,10 @@ describe('Executor Rebalance Wallet Action', () => {
                     nonce: 1,
                     orderTimestamp: 123456789,
                     sender: 'executor-address'
-                })
+                }),
+                getConfig: vi.fn().mockReturnValue({
+                    environment: 'devnet',
+                }),
             };
 
             // Get the mocked getExecutor function and have it return our mockExecutor

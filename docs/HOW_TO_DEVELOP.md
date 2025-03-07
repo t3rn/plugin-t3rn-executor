@@ -1,4 +1,4 @@
-# Testing Guide for Eliza AI Plugin
+# Developing Guide for Eliza AI Plugin
 
 The Eliza Executor Plugin extends the functionality of the [t3rn](https://www.t3rn.io/) executor by incorporating AI-driven rebalancing decisions and strategy optimizations. In order to test this plugin, we have provided a `.env` file to quickly get up to speed.
 
@@ -8,7 +8,7 @@ The Eliza Executor Plugin extends the functionality of the [t3rn](https://www.t3
 git clone https://github.com/elizaOS/eliza.git
 ```
 
-2. Move everything from this repository to eliza repo under `packages/plugin-executor`.
+2. Move everything from this repository to eliza under `packages/plugin-executor`.
 
 3. Create a `.env` file in the root directory and paste these variables:
 
@@ -55,9 +55,11 @@ pnpm start
 pnpm start:client
 ```
 
+7. When you're done and the changes are working drag and drop the insides of plugin-executor folder back onto this repository and commit.
+
 ## Usage
 ### Actions
-[Run these 3 actions to quickly analyze t3rn's integration with Eliza.](README.md#actions)
+[Run these 3 actions to quickly analyze t3rn's integration with Eliza.](../README.md#actions)
 
 ### Autonomy
-[t3rn AI Executor is designed to run the base t3rn executor code while at the same time taking advantage of AI Agents.](README.md#autonomy)
+[t3rn AI Executor is designed to run the base t3rn executor code while at the same time taking advantage of AI Agents.](../README.md#autonomy)

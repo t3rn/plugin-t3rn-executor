@@ -2,8 +2,12 @@
 
 A plugin for optimizing cryptocurrency execution strategies for executors within the t3rn ecosystem.
 
-## Eliza Team Testing
-[View instructions on how to test this plugin here](HOW_TO_TEST.md)
+## Developing and Testing
+[View instructions on how to develop this plugin here](docs/HOW_TO_DEVELOP.md)
+
+[View instructions on how to test this plugin here](docs/HOW_TO_TEST.md)
+
+[Read a development article here](docs/DEV_ARTICLE.md)
 
 ## Overview
 

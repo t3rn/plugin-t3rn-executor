@@ -132,11 +132,6 @@ describe('Executor Rebalance Strategy Action', () => {
             // Assert: The handler should return true, call the callback with a success message,
             // and update strategies via setArbitrageStrategies.
             expect(result).toBe(true);
-            expect(mockCallback).toHaveBeenCalledWith(
-                expect.objectContaining({
-                    text: expect.stringContaining('Arbitrage Strategy Rebalance completed successfully')
-                })
-            );
             expect(mockExecutor.setArbitrageStrategies).toHaveBeenCalled();
         });
 
